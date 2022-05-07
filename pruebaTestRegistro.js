@@ -5,8 +5,9 @@ const chrome = require('selenium-webdriver/chrome');
 let options = new chrome.Options();
 let driver = new Builder().forBrowser('chrome').setChromeOptions(options).build();
 
-async function iniciarSesion() {
+async function ejecutarPruebas() {
    describe('Pruebas de integracion', async function() {
+    
       it('1-A intentar iniciar sesión con credenciales no válidas, el sistema lo notifica y no permite el acceso.',async function() {
          this.timeout(50000);
 
@@ -26,12 +27,8 @@ async function iniciarSesion() {
       
           });
 
-          async function ejecutarPruebas() {
-            describe('Pruebas de integracion', async function() {
-
           it('2-Al intentar iniciar sesión con credenciales válidas, el sistema permite el acceso.',async function() {
             this.timeout(30000);
-            iniciarSesion();
              await driver.get('http://127.0.0.1:5500/registrodeClientes.html');
                       
                var username = await driver.findElement(By.id('usuario'));
@@ -51,7 +48,6 @@ async function iniciarSesion() {
 
             it('3-Al pulsar la pestaña Registro de Clientes se debe mostrar el formulario de Registro de Clientes.',async function() {
                this.timeout(30000);
-               iniciarSesion();
 
                await driver.sleep(1000);
                //await driver.get('http://127.0.0.1:5500/registrodeClientes.html');
@@ -62,8 +58,10 @@ async function iniciarSesion() {
                botonRegistro.click();
                var validaCredenciales = await formularioRegistro.isDisplayed();
                assert.equal(validaCredenciales,true);
-               await drive.sleep(1000); 
-            });    
+               await drive.sleep(1000);
+
+              
+            });
          });
 }
 ejecutarPruebas();
