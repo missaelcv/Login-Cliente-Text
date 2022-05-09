@@ -76,6 +76,44 @@ async function ejecutarPruebas() {
     assert.equal(await validaCredenciales, true);
     await driver.sleep(3000);
    });
+
+   it("4-Al crear un nuevo cliente (o sea, no existente), el mismo se puede crear correctamente y los campos se muestran vacíos.", async function () {
+    this.timeout(30000);
+
+    iniciarSesion();
+    await driver.sleep(3000);
+
+    var botonRegistro = await driver.findElement(By.xpath("//a[contains( text(), 'Registro')]"));
+
+    botonRegistro.click();
+
+    await driver.sleep(3000);
+
+    var cedula = await driver.findElement(By.id('txtCedula'));
+    var nombre = await driver.findElement(By.id('txtNombre'));
+    var apellido = await driver.findElement(By.id('txtApellido'));
+    var direccion = await driver.findElement(By.id('txtDireccion'));
+
+    await cedula.sendKeys("123");
+    await nombre.sendKeys("personaje");
+    await apellido.sendKeys("Humano");
+    await direccion.sendKeys("Direccion Correcta");
+
+    var botonAgregar = await driver.findElement(By.id('agregar'));
+
+    await driver.sleep(3000);
+    var botonRegistro = await driver.findElement(By.xpath("//a[contains( text(), 'Registro')]"));
+    botonAgregar.click();
+
+    await driver.sleep(3000);
+
+    var campoCedulaVacio = await cedula.getAttribute("value");
+    var campoNombreVacio = await nombre.getAttribute("value");
+    var campoApellidoVacio = await apellido.getAttribute("value");
+    var campoApellidoVacio = await direccion.getAttribute("value");
+
+  });
+
    });
 }
 ejecutarPruebas();
