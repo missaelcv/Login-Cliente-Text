@@ -94,23 +94,33 @@ async function ejecutarPruebas() {
     var apellido = await driver.findElement(By.id('txtApellido'));
     var direccion = await driver.findElement(By.id('txtDireccion'));
 
-    await cedula.sendKeys("123");
-    await nombre.sendKeys("personaje");
-    await apellido.sendKeys("Humano");
+    await cedula.sendKeys("1230");
+    await nombre.sendKeys("Missael");
+    await apellido.sendKeys("Caceres");
     await direccion.sendKeys("Direccion Correcta");
 
-    var botonAgregar = await driver.findElement(By.id('agregar'));
+    var botonAgrega = await driver.findElement(By.id('agrega'));
 
     await driver.sleep(3000);
     var botonRegistro = await driver.findElement(By.xpath("//a[contains( text(), 'Registro')]"));
-    botonAgregar.click();
+    await botonAgrega.click();
 
     await driver.sleep(3000);
 
     var campoCedulaVacio = await cedula.getAttribute("value");
     var campoNombreVacio = await nombre.getAttribute("value");
     var campoApellidoVacio = await apellido.getAttribute("value");
-    var campoApellidoVacio = await direccion.getAttribute("value");
+    var campoDireccionVacio = await direccion.getAttribute("value");
+
+    assert.equal(campoCedulaVacio, '');
+    assert.equal(campoNombreVacio, '');
+    assert.equal(campoApellidoVacio, '');
+    assert.equal(campoDireccionVacio,'');
+
+    var botonListado = await driver.findElement(By.xpath("//a[contains( text(), 'Listado')]"));
+    await botonListado.click();
+
+    await driver.sleep(3000);
 
   });
 
