@@ -14,16 +14,13 @@ async function iniciarSesion() {
   var username = await driver.findElement(By.id("usuario"));
   var password = await driver.findElement(By.id("password"));
   var botonIniciarSesion = await driver.findElement(
-    By.id("botonIniciarSesion")
-  );
+    By.id("botonIniciarSesion"));
 
   await username.sendKeys("JuanPerez");
   await password.sendKeys("123456");
   await botonIniciarSesion.click();
 
   await driver.sleep(1000);
-
-  
 }
 
 async function ejecutarPruebas() {
@@ -38,9 +35,7 @@ async function ejecutarPruebas() {
 
       var username = await driver.findElement(By.id("usuario"));
       var password = await driver.findElement(By.id("password"));
-      var botonIniciarSesion = await driver.findElement(
-        By.id("botonIniciarSesion")
-      );
+      var botonIniciarSesion = await driver.findElement(By.id("botonIniciarSesion"));
 
       await username.clear();
       await password.clear();
@@ -54,25 +49,17 @@ async function ejecutarPruebas() {
       assert.equal(await validaCredenciales.isDisplayed(), true);
     });
 
-    //  async function inicialSesion() {
-    //    describe('Pruebas de integracion', async function() {
-
     it("2-Al intentar iniciar sesión con credenciales válidas, el sistema permite el acceso.", async function () {
       this.timeout(30000);
 
       iniciarSesion();
       await driver.sleep(3000);
 
-      var botonRegistro = await driver.findElement(
-        By.xpath("//a[contains( text(), 'Registro')]"));
-        //console.log(botonRegistro);
+      var botonRegistro = await driver.findElement( By.xpath("//a[contains( text(), 'Registro')]"));
 
-      assert.equal(await botonRegistro.isDisplayed(), true);
+      assert.equal(await botonRegistro.isDisplayed(), true);  
     });
-    
- 
   
-
   it("3-Al pulsar la pestaña Registro de Clientes se debe mostrar el formulario de Registro de Clientes.", async function () {
     this.timeout(30000);
 
@@ -89,19 +76,6 @@ async function ejecutarPruebas() {
     assert.equal(await validaCredenciales, true);
     await driver.sleep(3000);
    });
-
-  //          it('10-Al pulsar la pestaña Registro de Clientes se debe mostrar el formulario de Registro de Clientes.',async function() {
-  //             this.timeout(30000);
-  //             await driver.sleep(1000);
-
-  //             await driver.get('http://127.0.0.1:5500/registrodeClientes.html');
-
-  //             await driver.sleep(1000);
-  //
-  //
-
-  //             await driver.quit();
-
    });
 }
 ejecutarPruebas();
