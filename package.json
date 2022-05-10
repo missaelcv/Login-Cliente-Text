@@ -1,0 +1,17 @@
+{
+  "name": "pruebatext",
+  "version": "1.0.0",
+  "description": "Proyecto de prueba para text",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha pruebaTestRegistro"
+  },
+  "author": "Missaelcv",
+  "license": "MIT",
+  "dependencies": {
+    "selenium-webdriver": "^4.1.2"
+  },
+  "devDependencies": {
+    "mocha": "^10.0.0"
+  }
+}
