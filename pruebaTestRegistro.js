@@ -10,8 +10,10 @@ async function prueba() {
    describe('Pruebas de integracion', async function() {
       it('debe actualizar el resultado al presionar el boton sumar', async function(){
          this.timeout(10000);
-         await driver.get('http://127.0.0.1:5500/registrodeClientes.html');
-               
+         await driver.get('http://127.0.0.1:5500/registrodeClientes.html');//colocar aqui la ruta que liveServer provea
+
+         
+         
          await driver.sleep(1000);
          await driver.quit();
       });
