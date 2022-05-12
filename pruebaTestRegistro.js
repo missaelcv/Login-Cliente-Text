@@ -30,7 +30,32 @@ async function prueba() {
 
          await driver.sleep(tiempo);
          await driver.quit();
-          }
+          };
+
+          it('Al Intentar iniciar sesion con credenciales no validas.',async function() {
+             this.timeout(3000);
+             await driver.get('http://127.0.0.1:5500/registrodeClientes.html');
+
+             //Opcion 1 
+             var username = await driver.findElement(By.id('username'));
+             var password = await driver.findElement(By.password('password'));
+             var loginbutton = await driver.findElement(By.id('loginbutton'));
+             
+             await username.sendKey('JuanPerez');
+             await password.sendKey('1234');
+
+             loginbutton.click();
+             await driver.sleep(tiempo);
+
+             var compruebaCredenciales = await driver.findElement(By.xpath("//strong[contains( text (),'Credenciales no Validos')]"));
+          
+          });
+
+          it('Al Intentar iniciar sesion con credenciales no validas.',async function() {
+            this.timeout(3000);
+            await driver.get('http://127.0.0.1:5500/registrodeClientes.html');
+            iniciarSesion();
+         });
       });
    });
 }
