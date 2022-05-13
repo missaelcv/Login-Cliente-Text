@@ -228,6 +228,17 @@ async function ejecutarPruebas() {
     await driver.get("http://127.0.0.1:5500/registrodeClientes.html");
     iniciarSesion();
 
+    await driver.sleep(3000);
+
+    var tablaConCedula = await driver.findElement(By.css('tbody>tr:first-child td:nth-child(1)'));
+    var tablaConCedulaLectura = await tablaConCedula.getText();
+
+    var botonEliminar = await driver.findElement(By.css("tr:nth-child(1) .btn-danger"));
+    botonEliminar.click();
+
+  
+
+
     
 
 
