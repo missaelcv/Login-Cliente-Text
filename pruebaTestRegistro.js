@@ -195,12 +195,11 @@ async function ejecutarPruebas() {
     botonAñadir = await driver.findElement(By.id('agrega'));
 
    var listadoClientes = await driver.findElement(By.css('div.alert.alert-danger.fade.show'));
-   //await listadoClientes.click();
 
     await driver.sleep(3000)
   });
 
-  it("7.	Al pulsar la pestaña Listado de Clientes se debe mostrar la tabla de clientes..", async function () {
+  it("7-Al pulsar la pestaña Listado de Clientes se debe mostrar la tabla de clientes..", async function () {
     this.timeout(30000);
 
     await driver.get("http://127.0.0.1:5500/registrodeClientes.html");
@@ -219,17 +218,20 @@ async function ejecutarPruebas() {
     await driver.sleep(3000);
 
     var listadoClientes =await driver.findElement(By.xpath("//th[contains( text(), 'Datos')]"));
-   // listadoClientes.click();
-    
+   
     await driver.sleep(3000);
+  });
+
+  it("8-Al pulsar el botón eliminar en alguna de las filas de la tabla de clientes, dicha fila se elimina de la tabla.", async function () {
+    this.timeout(30000);
+
+    await driver.get("http://127.0.0.1:5500/registrodeClientes.html");
+    iniciarSesion();
+
     
 
 
   });
-
-
-
- 
 
    });
 }
