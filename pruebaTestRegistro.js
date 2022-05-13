@@ -236,11 +236,14 @@ async function ejecutarPruebas() {
     var botonEliminar = await driver.findElement(By.css("tr:nth-child(1) .btn-danger"));
     botonEliminar.click();
 
-  
+    await driver.sleep(3000);
 
+    var tablaEliminaCedula = await driver.findElement(By.css('tbody>tr:first-child td:nth-child(1)'));
+    var tablaEliminaCedulaTextuar = await tablaEliminaCedula.getText();
 
-    
+    await driver.sleep(3000);
 
+    assert.notEqual(tablaEliminaCedulaTextuar, tablaConCedulaLectura);
 
   });
 
