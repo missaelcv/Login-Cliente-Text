@@ -246,7 +246,7 @@ async function ejecutarPruebas() {
     assert.notEqual(tablaEliminaCedulaTextuar, tablaConCedulaLectura);
   });
 
-  it("8-Al pulsar el botón eliminar en alguna de las filas de la tabla de clientes, dicha fila se elimina de la tabla.", async function () {
+  it("9-Al pulsar el botón modificar en alguna de las filas de la tabla de clientes, dicha fila muestra los campos de texto correspondientes (Se pone en modo de edición).", async function () {
     this.timeout(30000);
 
     await driver.get("http://127.0.0.1:5500/registrodeClientes.html");
@@ -258,6 +258,14 @@ async function ejecutarPruebas() {
     botonEditacion.click();
 
     await driver.sleep(3000);
+
+    var camposParaEditacion = await driver.findElement(By.css("tr:nth-child(1) > td:nth-child(1) > .form-control"));
+    camposParaEditacion.sendKeys("");
+
+    await driver.sleep(3000);
+    
+    var botonEliminaEditacion = await driver.findElement(By.css("btn-warning > .fas"));
+    botonEliminaEditacion.click();
     
   });
 
