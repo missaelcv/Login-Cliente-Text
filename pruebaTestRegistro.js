@@ -253,8 +253,8 @@ async function ejecutarPruebas() {
     iniciarSesion();
 
     await driver.sleep(3000);
-
-    var botonEditacion = await driver.findElement(By.css("tr:nth-child(1) .btn-primary"));
+                //Nota el color de Edicion debe ser Success otro da error
+    var botonEditacion = await driver.findElement(By.css("tr:nth-child(1) .btn-success"));
     botonEditacion.click();
 
     await driver.sleep(3000);
@@ -264,9 +264,8 @@ async function ejecutarPruebas() {
 
     await driver.sleep(3000);
     
-    var botonEliminaEditacion = await driver.findElement(By.css("btn-warning > .fas"));
+    var botonEliminaEditacion = await driver.findElement(By.css(".btn-warning > .fas"));
     botonEliminaEditacion.click();
-    
   });
 
 
