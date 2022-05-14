@@ -244,8 +244,23 @@ async function ejecutarPruebas() {
     await driver.sleep(3000);
 
     assert.notEqual(tablaEliminaCedulaTextuar, tablaConCedulaLectura);
-
   });
+
+  it("8-Al pulsar el botón eliminar en alguna de las filas de la tabla de clientes, dicha fila se elimina de la tabla.", async function () {
+    this.timeout(30000);
+
+    await driver.get("http://127.0.0.1:5500/registrodeClientes.html");
+    iniciarSesion();
+
+    await driver.sleep(3000);
+
+    var botonEditacion = await driver.findElement(By.css("tr:nth-child(1) .btn-primary"));
+    botonEditacion.click();
+
+    await driver.sleep(3000);
+    
+  });
+
 
    });
 }
