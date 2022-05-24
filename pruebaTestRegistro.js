@@ -27,8 +27,8 @@ async function ejecutarPruebas() {
       
           });
 
-          async function inicialSesion() {
-            describe('Pruebas de integracion', async function() {
+         //  async function inicialSesion() {
+         //    describe('Pruebas de integracion', async function() {
 
           it('2-Al intentar iniciar sesión con credenciales válidas, el sistema permite el acceso.',async function() {
             this.timeout(30000);
@@ -47,25 +47,24 @@ async function ejecutarPruebas() {
                var validaCredenciales = await driver.findElement(By.xpath("//strong[contains( text (),'Credenciales no válidos')]"));
               
                assert.equal(await validaCredenciales.isDisplayed(),true);
-            });
+             });
  
          });
-            it('3-Al pulsar la pestaña Registro de Clientes se debe mostrar el formulario de Registro de Clientes.',async function() {
-               this.timeout(30000);
-               //await driver.sleep(1000);
-               inicialSesion();
-               await driver.get('http://127.0.0.1:5500/registrodeClientes.html');
-               
-               var botonRegistro = await driver.findElement(By.xpath("//a[contains( text(), 'Registro')]"));
-               var formularioRegistro = await driver.findElement(By.css("#contenedor-formulario-de-cleintes>form"));
+               it('3-Al pulsar la pestaña Registro de Clientes se debe mostrar el formulario de Registro de Clientes.',async function() {
+                  this.timeout(30000);
+                  //await driver.sleep(1000);
+                //  inicialSesion();
+                  await driver.get('http://127.0.0.1:5500/registrodeClientes.html');
+                  
+                  var botonRegistro = await driver.findElement(By.xpath("//a[contains( text(), 'Registro')]"));
+                  var formularioRegistro = await driver.findElement(By.css("#contenedor-formulario-de-cleintes>form"));
 
-               botonRegistro.click();
-               var validaCredenciales = await formularioRegistro.isDisplayed();
-               assert.equal(validaCredenciales,true);
-               await drive.sleep(1000);
-
-           
+                  botonRegistro.click();
+                  var validaCredenciales = await formularioRegistro.isDisplayed();
+                  assert.equal(validaCredenciales,true);
+                  await drive.sleep(1000);
          });
-      }});
-}
+         
+         
+   }
 ejecutarPruebas();
