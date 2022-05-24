@@ -53,18 +53,33 @@ async function ejecutarPruebas() {
                it('3-Al pulsar la pestaña Registro de Clientes se debe mostrar el formulario de Registro de Clientes.',async function() {
                   this.timeout(30000);
                   //await driver.sleep(1000);
-                //  inicialSesion();
+                 
                   await driver.get('http://127.0.0.1:5500/registrodeClientes.html');
                   
                   var botonRegistro = await driver.findElement(By.xpath("//a[contains( text(), 'Registro')]"));
                   var formularioRegistro = await driver.findElement(By.css("#contenedor-formulario-de-cleintes>form"));
-
+                  ejecutarPruebas();
                   botonRegistro.click();
                   var validaCredenciales = await formularioRegistro.isDisplayed();
                   assert.equal(validaCredenciales,true);
                   await drive.sleep(1000);
          });
          
+         it('10-Al pulsar la pestaña Registro de Clientes se debe mostrar el formulario de Registro de Clientes.',async function() {
+            this.timeout(30000);
+            await driver.sleep(1000);
+           
+            await driver.get('http://127.0.0.1:5500/registrodeClientes.html');
+
+            await driver.sleep(1000);
+            var botonQuitarEdicion = await driver.findElement(By.css(".btn-warning > .fas"));
+~first-child td:nth-child(1)));
+            assert.notEqual(verificarCedulaNoEstaEnEnEdicion, " ");
+
+            await driver.quit();
+
+
+   });
          
    }
 ejecutarPruebas();
