@@ -152,9 +152,54 @@ async function ejecutarPruebas() {
     var listadoClientes = await driver.findElement(By.xpath("//th[contains( text(), 'Datos')]"));
     await driver.sleep(3000);
     listadoClientes.click();
-
   });
 
+  it("6-Al intentar crear un cliente existente (o sea, el número de cedula ya estaba registrado), el sistema no lo permite y muestra un mensaje notificando que el cliente ya existe.", async function () {
+    this.timeout(30000);
+
+    await driver.get("http://127.0.0.1:5500/registrodeClientes.html");
+
+    iniciarSesion();
+
+    await driver.sleep(3000);
+
+    var botonRegistrar = await driver.findElement(By.xpath("//a[contains( text(), 'Registro')]"));
+    botonRegistrar.click();
+
+    await driver.sleep(3000);
+
+    var campoCedulaUsado = await driver.findElement(By.id('txtCedula'));
+    var campoNombreUsado = await driver.findElement(By.id('txtNombre'));
+    var campoApellidoUsado = await driver.findElement(By.id('txtApellido'));
+    var campoDireccionUsado = await driver.findElement(By.id('txtDireccion'));
+
+    await campoCedulaUsado.sendKeys("1234");
+    await campoNombreUsado.sendKeys("Missael");
+    await campoApellidoUsado.sendKeys("Villar");
+    await campoDireccionUsado.sendKeys("Santiago");
+
+    await driver.sleep(3000);
+
+    var botonAñadir2 = await driver.findElement(By.id('agrega'))
+    botonAñadir2.click();
+
+    botonRegistrar.click();
+
+    await campoCedulaUsado.sendKeys("1234");
+    await campoNombreUsado.sendKeys("Missael");
+    await campoApellidoUsado.sendKeys("Villar");
+    await campoDireccionUsado.sendKeys("Santiago"); 
+
+    await driver.sleep(3000);
+
+    botonAñadir = await driver.findElement(By.id('agrega'));
+
+   var listadoClientes = await driver.findElement(By.css(div.alert.alert-darnger.fade.show));
+
+    await driver.sleep(3000)
+  });
+
+ 
 
    });
 }
