@@ -194,7 +194,7 @@ async function ejecutarPruebas() {
 
     botonAñadir = await driver.findElement(By.id('agrega'));
 
-   var listadoClientes = await driver.findElement(By.css(div.alert.alert-darnger.fade.show));
+   var listadoClientes = await driver.findElement(By.css('div.alert.alert-danger.fade.show'));
 
     await driver.sleep(3000)
   });
