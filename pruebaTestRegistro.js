@@ -121,8 +121,40 @@ async function ejecutarPruebas() {
     await botonListado.click();
 
     await driver.sleep(3000);
+  });
+
+  it("5-Al agregar un nuevo cliente (presionando el botón Agregar), se debe mostrar el listado de clientes.", async function () {
+    this.timeout(30000);
+
+   // await driver.get("http://127.0.0.1:5500/registrodeClientes.html");
+
+    iniciarSesion();
+    await driver.sleep(3000);
+    
+    var ventanaDeRegistro = await driver.findElement(By.xpath("//a[contains( text(), 'Registro')]"));
+    ventanaDeRegistro.click();
+
+    var campoCedula = await driver.findElement(By.id('txtCedula'));
+    var campoNombre = await driver.findElement(By.id('txtNombre'));
+    var campoApellido = await driver.findElement(By.id('txtApellido'));
+    var campoDireccion = await driver.findElement(By.id('txtDireccion'));
+
+    await campoCedula.sendKeys("1234")
+    await campoNombre.sendKeys("missael");
+    await campoApellido.sendKeys("Caceres");
+    await campoDireccion.sendKeys("Santiago");
+
+    var botonAgrega = await driver.findElement(By.id('agrega'));
+    botonAgrega.click();
+
+    await driver.sleep(3000);
+    
+    var listadoClientes = await driver.findElement(By.xpath("//th[contains( text(), 'Datos')]"));
+    await driver.sleep(3000);
+    listadoClientes.click();
 
   });
+
 
    });
 }
