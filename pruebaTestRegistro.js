@@ -195,6 +195,7 @@ async function ejecutarPruebas() {
     botonAñadir = await driver.findElement(By.id('agrega'));
 
    var listadoClientes = await driver.findElement(By.css('div.alert.alert-danger.fade.show'));
+   //await listadoClientes.click();
 
     await driver.sleep(3000)
   });
@@ -203,6 +204,7 @@ async function ejecutarPruebas() {
     this.timeout(30000);
 
     await driver.get("http://127.0.0.1:5500/registrodeClientes.html");
+    iniciarSesion();
     
     await driver.sleep(3000);
 
@@ -216,8 +218,8 @@ async function ejecutarPruebas() {
 
     await driver.sleep(3000);
 
-    var listadoClientes =await driver.findElement(By.xpath("//a[contains( text(), 'Datos')]"));
-    listadoClientes.click();
+    var listadoClientes =await driver.findElement(By.xpath("//th[contains( text(), 'Datos')]"));
+   // listadoClientes.click();
     
     await driver.sleep(3000);
     
