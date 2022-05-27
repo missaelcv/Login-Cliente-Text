@@ -199,6 +199,21 @@ async function ejecutarPruebas() {
     await driver.sleep(3000)
   });
 
+  it("7.	Al pulsar la pestaña Listado de Clientes se debe mostrar la tabla de clientes..", async function () {
+    this.timeout(30000);
+
+    
+    await driver.sleep(3000);
+
+    var botonRegistrar = await driver.findElement(By.xpath("//a[contains( text(), 'Registro')]"));
+
+    botonRegistrar.click();
+
+
+  });
+
+
+
  
 
    });
