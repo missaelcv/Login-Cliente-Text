@@ -268,6 +268,23 @@ async function ejecutarPruebas() {
     botonEliminaEditacion.click();
   });
 
+  it("9-Al pulsar el botón modificar en alguna de las filas de la tabla de clientes, dicha fila muestra los campos de texto correspondientes (Se pone en modo de edición).", async function () {
+    this.timeout(30000);
+
+    await driver.get("http://127.0.0.1:5500/registrodeClientes.html");
+    iniciarSesion();
+
+    await driver.sleep(3000);
+
+    var botonEditacion = await driver.findElement(By.css("tr:nth-child(1) .btn-success"));
+    botonEditacion.click();
+
+    await driver.sleep(3000);
+
+    
+
+  });
+
 
    });
 }
