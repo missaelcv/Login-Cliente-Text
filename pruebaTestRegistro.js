@@ -281,7 +281,13 @@ async function ejecutarPruebas() {
 
     await driver.sleep(3000);
 
-   
+    var botonEliminaEditacion = await driver.findElement(By.css(".btn-warning > .fas"));
+    botonEliminaEditacion.click();
+
+    await driver.sleep(3000);
+
+    var modificarEditacion = await driver.findElement(By.css('tbody>tr:first-child td:nth-child(1)'));
+    assert.notEqual(modificarEditacion, " ");
   });
 
    });
