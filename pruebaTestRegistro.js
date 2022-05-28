@@ -268,7 +268,7 @@ async function ejecutarPruebas() {
     botonEliminaEditacion.click();
   });
 
-  it("9-Al pulsar el botón modificar en alguna de las filas de la tabla de clientes, dicha fila muestra los campos de texto correspondientes (Se pone en modo de edición).", async function () {
+  it("10-Al pulsar el botón modificar en alguna de las filas de la tabla de clientes (mientras esta esté en modo de edición), dicha fila Oculta los campos de texto y muestra solamente el texto. ", async function () {
     this.timeout(30000);
 
     await driver.get("http://127.0.0.1:5500/registrodeClientes.html");
@@ -281,10 +281,8 @@ async function ejecutarPruebas() {
 
     await driver.sleep(3000);
 
-    
-
+   
   });
-
 
    });
 }
